@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<form>
+		<label for="username">username</label>
+		<input type="text" id="username" />
+		<label for="email">email</label>
+		<input type="text" id="email" />
+
+		<button type="button" id="btn">submit</button>
+	</form>
+	
+	<script src="validator.js"></script>
+	<script>
+
+		var btn = document.getElementById('btn');
+		btn.addEventListener('click', function() {
+			var form = document.querySelector('form');
+
+			var validator = new Validator();
+			validator.add(form.username, [
+				{
+					rule: 'NotEmpty',
+					msg: '用户名不能为空'
+				},
+				{
+					rule: 'MinLength:10',
+					msg: '用户名长度不能小于10位'
+				}
+			]);
+
+			validator.add(form.email, [
+				{
+					rule: 'NotEmpty',
+					msg: '邮箱不能为空'
+				},
+				{
+					rule: 'MinLength:10',
+					msg: '邮箱长度不能小于10位'
+				}
+			]);
+
+			var errMsg = validator.start();
+
+			if(errMsg) {
+				alert(errMsg);
+				return false;
+			}
+
+			form.submit();
+		});
+	</script>
+</body>
+</html>
