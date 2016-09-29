@@ -1,0 +1,19 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+.parallax{
+  background-image: url(../img/3.jpg);
+  background-attachment: fixed;
+  background-size: cover;
+  height: 600px;
+}
+.parallax h2{
+  font-size: 170px;
+  line-height: 600px;
+  text-align: center;
+  color: #fff;
+}
+.content{
+  font-size: 40px;
+}
