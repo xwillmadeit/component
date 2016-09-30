@@ -5,7 +5,8 @@
 		var defaults = {
 			content: 'do you want to close?',
 			closeBtn: false,
-			overlay: false
+			overlay: false,
+			className: 'fade-and-drop'
 		}
 		
 		this.modal = null;
@@ -20,6 +21,11 @@
 	Modal.prototype.open = function() {
 		createModal.call(this);
 		bindCloseEvent.call(this);
+
+		//key to the animation
+		window.getComputedStyle(this.modal).height;
+
+		this.modal.classList.add('modal-open');
 	}
 
 	Modal.prototype.close = function() {
@@ -43,7 +49,7 @@
 		var tempNode = document.createDocumentFragment();
 		//modal
 		this.modal = document.createElement('div');
-		this.modal.classList.add('modal-in');
+		this.modal.classList.add('xwill-modal', this.options.className);
 
 		//closeBtn
 		if(this.options.closeBtn) {
